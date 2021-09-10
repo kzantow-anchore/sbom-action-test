@@ -1,0 +1,24 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - published
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn
+      - uses: kzantow-anchore/sbom-action@basic-spdx-functionality
+      - run: yarn build
+      - run: docker build -t sbom-action-test:latest .
+      - uses: kzantow-anchore/sbom-action@basic-spdx-functionality
+        with:
+          image: sbom-action-test:latest
+      - run: echo "Releasing this image..."
+        if: ${{ github.event_name == 'release' }}
