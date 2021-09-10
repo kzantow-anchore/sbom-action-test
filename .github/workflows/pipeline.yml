@@ -1,3 +1,4 @@
+name: Build Pipeline
 on:
   pull_request:
     branches:
