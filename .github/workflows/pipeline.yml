@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn
-      - uses: kzantow-anchore/sbom-action@basic-spdx-functionality
+      - uses: anchore/sbom-action@main
       - run: yarn build
       - run: docker build -t sbom-action-test:latest .
-      - uses: kzantow-anchore/sbom-action@basic-spdx-functionality
+      - uses: anchore/sbom-action@main
         with:
           image: sbom-action-test:latest
           artifact_name: image.spdx
