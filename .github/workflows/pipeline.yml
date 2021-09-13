@@ -18,6 +18,6 @@ jobs:
       - uses: anchore/sbom-action@main
         with:
           image: sbom-action-test:latest
-          artifact_name: image.spdx
+          artifact-name: image.spdx
       - run: echo "Releasing this image..."
         if: ${{ github.event_name == 'release' }}
