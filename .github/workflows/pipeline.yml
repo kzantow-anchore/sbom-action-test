@@ -14,7 +14,7 @@ jobs:
       - run: yarn
       - uses: anchore/sbom-action@main
         with:
-          compare_pulls: true
+          compare-pulls: true
       - run: yarn build
       - run: docker build -t sbom-action-test:latest .
       - uses: anchore/sbom-action@main
