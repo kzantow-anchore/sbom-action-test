@@ -1,7 +1,7 @@
 name: Create / Edit Release
 on:
   release:
-    types: [ created, edited ]
+    types: [ published, created, edited ]
 jobs:
   build:
     runs-on: ubuntu-latest
