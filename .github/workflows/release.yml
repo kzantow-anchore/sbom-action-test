@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: kzantow-anchore/sbom-action/publish-sbom@find-draft-releases
         with:
-          sbom-artifact-match: .*.sbom.json$
+          sbom-artifact-match: .*.spdx.json$
