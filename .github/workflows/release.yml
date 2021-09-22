@@ -1,0 +1,11 @@
+name: Create / Edit Release
+on:
+  release:
+    types: [ created, edited ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kzantow-anchore/sbom-action/publish-sbom@find-draft-releases
+        with:
+          sbom-artifact-match: .*.sbom.json$
