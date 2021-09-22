@@ -12,12 +12,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn
-      - uses: anchore/sbom-action@main
-      - run: yarn build
-      - run: docker build -t sbom-action-test:latest .
-      - uses: anchore/sbom-action@main
+      - uses: kzantow-anchore/sbom-action@find-draft-releases
         with:
-          image: sbom-action-test:latest
-          artifact-name: image.spdx
+          compare-pulls: true
+#      - run: yarn build
+#      - run: docker build -t sbom-action-test:latest .
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          draft: true
+#      - uses: kzantow-anchore/sbom-action@find-draft-releases
+#        with:
+#          image: sbom-action-test:latest
+#          artifact-name: image.spdx
+      - uses: kzantow-anchore/sbom-action/publish-sbom@find-draft-releases
+        with:
+          sbom-artifact-match: .*.sbom.json$
       - run: echo "Releasing this image..."
         if: ${{ github.event_name == 'release' }}
