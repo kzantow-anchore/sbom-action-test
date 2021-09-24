@@ -6,6 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: kzantow-anchore/sbom-action/publish-sbom@find-draft-releases
+      - uses: anchore/sbom-action/publish-sbom@v0
         with:
           sbom-artifact-match: .*.spdx.json$

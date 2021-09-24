@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm i
-      - uses: kzantow-anchore/sbom-action@find-draft-releases
+      - uses: anchore/sbom-action@v0
         with:
           compare-pulls: true
       - run: npm run package
@@ -23,11 +23,11 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           draft: true
-      - uses: kzantow-anchore/sbom-action@find-draft-releases
+      - uses: anchore/sbom-action@v0
         with:
           image: sbom-action-test:latest
           artifact-name: image.spdx.json
-      - uses: kzantow-anchore/sbom-action/publish-sbom@find-draft-releases
+      - uses: anchore/sbom-action/publish-sbom@v0
         with:
           sbom-artifact-match: .*.sbom.json$
       - run: echo "Releasing this image..."
