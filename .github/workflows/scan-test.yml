@@ -1,7 +1,7 @@
 name: Test Scan
 on:
-  release:
-    types: [ published, created, edited ]
+  push:
+
 jobs:
   build:
     runs-on: ubuntu-latest
