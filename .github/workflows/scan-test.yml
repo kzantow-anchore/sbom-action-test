@@ -11,5 +11,7 @@ jobs:
         continue-on-error: true
         with:
           image: centos:6
-      - run: echo Scan Failed!
+      - run: |
+          echo Scan Failed!
+          exit 1
         if: ${{steps.scan.outcome == 'failure'}}
