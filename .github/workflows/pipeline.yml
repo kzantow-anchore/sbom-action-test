@@ -28,7 +28,6 @@ jobs:
           image: sbom-action-test:latest
           artifact-name: image.spdx.json
       - uses: anchore/sbom-action/publish-sbom@v0
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          sbom-artifact-match: .*.sbom.json$
-      - run: echo "Releasing this image..."
-        if: ${{ github.event_name == 'release' }}
+          sbom-artifact-match: .*.spdx.json$
