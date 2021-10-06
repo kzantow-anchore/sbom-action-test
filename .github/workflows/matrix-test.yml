@@ -12,10 +12,10 @@ jobs:
           - 5000:5000
     strategy:
       matrix:
-        num: ["1","2","3"]
+        n: ["1", "2", "3"]
     steps:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run package
-      - run: docker build -t localhost:5000/sbom-action-test-${{num}}:latest .
-      - run: docker push localhost:5000/sbom-action-test-${{num}}:latest
+      - run: docker build -t localhost:5000/sbom-action-test-${{n}}:latest .
+      - run: docker push localhost:5000/sbom-action-test-${{n}}:latest
