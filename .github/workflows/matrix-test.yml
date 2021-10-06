@@ -12,7 +12,7 @@ jobs:
           - 5000:5000
     strategy:
       matrix:
-        num: [1,2,3]
+        num: ["1","2","3"]
     steps:
       - uses: actions/checkout@v2
       - run: npm install
