@@ -6,6 +6,7 @@ on:
         description: 'Run tmate'
         required: true
         default: 'false'
+  pull_request:
 
 jobs:
   go:
