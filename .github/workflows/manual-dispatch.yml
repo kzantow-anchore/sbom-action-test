@@ -1,0 +1,16 @@
+name: "Manual Dispatch"
+on:
+  workflow_dispatch:
+    inputs:
+      enable-tmate:
+        description: 'Run tmate'
+        required: true
+        default: 'false'
+  pull_request:
+
+jobs:
+  go:
+    name: "asdf"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event.inputs.enable-tmate }}"
