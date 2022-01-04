@@ -14,3 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ github.event.inputs.enable-tmate }}"
+      - run: echo "run tmate!"
+        if: ${{ github.event.inputs.enable-tmate }}
+      - run: echo "run tmate == 'true'"
+        if: ${{ github.event.inputs.enable-tmate == "true" }}
+      - run: echo "no running tmate!"
+        if: ${{ github.event.inputs.enable-tmate != "true" }}
