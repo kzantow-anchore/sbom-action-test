@@ -21,10 +21,11 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           draft: true
-      - uses: anchore/sbom-action@upload-to-github-api
+      - uses: kzantow-anchore/sbom-action@upload-to-github-api
         with:
           image: sbom-action-test:latest
           artifact-name: image.spdx.json
+          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
       - uses: anchore/sbom-action/publish-sbom@v0
         if: startsWith(github.ref, 'refs/tags/')
         with:
