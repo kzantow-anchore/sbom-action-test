@@ -24,11 +24,11 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: '^1.17.6'
-      - uses: kzantow-anchore/sbom-action@upload-to-github-api
-        with:
-          image: sbom-action-test:latest
-          artifact-name: image.spdx.json
-          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+#      - uses: kzantow-anchore/sbom-action@upload-to-github-api
+#        with:
+#          image: sbom-action-test:latest
+#          artifact-name: image.spdx.json
+#          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
       - uses: kzantow-anchore/sbom-action@upload-to-github-api
         with:
           image: alpine:latest
