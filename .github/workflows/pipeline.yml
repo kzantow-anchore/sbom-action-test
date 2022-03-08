@@ -31,7 +31,7 @@ jobs:
 #          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
       - uses: kzantow-anchore/sbom-action@upload-to-github-api
         with:
-          path: .
+          image: alpine:latest
           artifact-name: alpine.spdx.json
           syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
       - uses: anchore/sbom-action/publish-sbom@v0
