@@ -29,11 +29,22 @@ jobs:
 #          image: sbom-action-test:latest
 #          artifact-name: image.spdx.json
 #          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+
+      - uses: kzantow-anchore/sbom-action@upload-to-github-api
+        with:
+          image: alpine:latest
+          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+
       - uses: kzantow-anchore/sbom-action@upload-to-github-api
         with:
           image: ubuntu:latest
-          artifact-name: alpine.spdx.json
           syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+
+      - uses: kzantow-anchore/sbom-action@upload-to-github-api
+        with:
+          path: .
+          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+
       - uses: anchore/sbom-action/publish-sbom@v0
         if: startsWith(github.ref, 'refs/tags/')
         with:
