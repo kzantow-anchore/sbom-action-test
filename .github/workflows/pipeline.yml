@@ -30,19 +30,22 @@ jobs:
 #          artifact-name: image.spdx.json
 #          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
 
-      - uses: kzantow-anchore/sbom-action@upload-to-github-api
-        with:
-          image: alpine:latest
-#          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+#      - uses: kzantow-anchore/sbom-action@upload-to-github-api
+#        with:
+#          image: alpine:latest
+#          dependency-snapshot: true
+##          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
 
-      - uses: kzantow-anchore/sbom-action@upload-to-github-api
-        with:
-          image: ubuntu:latest
-#          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
-
+#      - uses: kzantow-anchore/sbom-action@upload-to-github-api
+#        with:
+#          image: ubuntu:latest
+#          dependency-snapshot: true
+##          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+#
       - uses: kzantow-anchore/sbom-action@upload-to-github-api
         with:
           path: .
+          dependency-snapshot: true
 #          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
 
       - uses: anchore/sbom-action/publish-sbom@v0
