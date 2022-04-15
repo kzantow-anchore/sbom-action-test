@@ -30,9 +30,16 @@ jobs:
         with:
           go-version: '^1.18'
 
+#      - uses: kzantow-anchore/sbom-action@use-correlator-field
+#        with:
+#          image: sbom-action-test:latest
+#          artifact-name: image.spdx.json
+#          dependency-snapshot: true
+#          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/update-github-format.zip
+
       - uses: kzantow-anchore/sbom-action@use-correlator-field
         with:
-          image: sbom-action-test:latest
+          image: alpine:latest
           artifact-name: image.spdx.json
           dependency-snapshot: true
           syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/update-github-format.zip
