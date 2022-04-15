@@ -10,45 +10,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - run: npm i
       - uses: anchore/sbom-action@v0
         with:
           compare-pulls: true
+
       - run: npm run package
+
       - run: docker build -t sbom-action-test:latest .
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          draft: true
-#      - uses: actions/setup-go@v2
-#        with:
-#          go-version: '^1.17.6'
-#      - uses: kzantow-anchore/sbom-action@upload-to-github-api
-#        with:
-#          image: sbom-action-test:latest
-#          artifact-name: image.spdx.json
-#          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
 
-      - uses: anchore/sbom-action@v0
-        with:
-          image: alpine:latest
-          dependency-snapshot: true
-#          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
-
-      - uses: anchore/sbom-action@v0
-        with:
-          image: ubuntu:latest
-          dependency-snapshot: true
-#          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+#      - name: Release
+#        uses: softprops/action-gh-release@v1
+#        if: startsWith(github.ref, 'refs/tags/')
+#        with:
+#          draft: true
 #
-      - uses: anchore/sbom-action@v0
+      - uses: actions/setup-go@v2
         with:
-          path: .
-          dependency-snapshot: true
-#          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/export-github-fmt.zip
+          go-version: '^1.18'
 
-      - uses: anchore/sbom-action/publish-sbom@v0
-        if: startsWith(github.ref, 'refs/tags/')
+      - uses: kzantow-anchore/sbom-action@use-correlator-field
         with:
-          sbom-artifact-match: .*.spdx.json$
+          image: sbom-action-test:latest
+          artifact-name: image.spdx.json
+          dependency-snapshot: true
+          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/update-github-format.zip
+
+#      - uses: anchore/sbom-action/publish-sbom@v0
+#        if: startsWith(github.ref, 'refs/tags/')
+#        with:
+#          sbom-artifact-match: .*.spdx.json$
