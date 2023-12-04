@@ -33,7 +33,7 @@ jobs:
       - name: Scan the image and upload dependency results
         uses: anchore/sbom-action@main
         with:
-          image: php:8.2-alpine3.17
+          image: php:8.2-alpine3.16
 #          image: "localbuild/testimage:latest"
 #          artifact-name: image.spdx.json
           dependency-snapshot: true
