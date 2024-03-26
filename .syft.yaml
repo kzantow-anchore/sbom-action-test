@@ -1,0 +1,4 @@
+log:
+  level: "debug"
+
+select-catalogers: "+sbom-cataloger"
