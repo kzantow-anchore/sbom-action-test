@@ -30,10 +30,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag localbuild/testimage:latest
-      - name: Scan the image and upload dependency results
-        uses: anchore/sbom-action@v0
+#      - name: Scan the image and upload dependency results
+#        uses: anchore/sbom-action@v0
+#        with:
+#          image: php:8.2-alpine3.16
+##          image: "localbuild/testimage:latest"
+##          artifact-name: image.spdx.json
+#          dependency-snapshot: true
+      - uses: kzantow-anchore/sbom-action@chore/update-github-artifact-client
         with:
           image: php:8.2-alpine3.16
-#          image: "localbuild/testimage:latest"
 #          artifact-name: image.spdx.json
           dependency-snapshot: true

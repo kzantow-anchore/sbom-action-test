@@ -44,12 +44,6 @@ jobs:
 #          dependency-snapshot: true
 #          syft-version: https://github.com/kzantow-anchore/syft/archive/refs/heads/update-github-format.zip
 
-      - uses: kzantow-anchore/sbom-action@chore/update-github-artifact-client
-        with:
-          image: alpine:latest
-          artifact-name: new-image.spdx.json
-          dependency-snapshot: true
-
 #      - uses: anchore/sbom-action/publish-sbom@v0
 #        if: startsWith(github.ref, 'refs/tags/')
 #        with:
