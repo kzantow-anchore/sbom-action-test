@@ -6,6 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: kzantow-anchore/sbom-action@chore/update-github-artifact-client
+      - uses: anchore/sbom-action@main
         with:
           sbom-artifact-match: .*.spdx.json$
