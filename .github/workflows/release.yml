@@ -5,6 +5,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # need write to update the generated SBOM
+      packages: write # need access to write docker package
     steps:
       - uses: anchore/sbom-action@main
         with:
