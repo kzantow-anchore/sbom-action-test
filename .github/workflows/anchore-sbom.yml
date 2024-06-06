@@ -28,11 +28,11 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag localbuild/testimage:latest
+#      - name: Build the Docker image
+#        run: docker build . --file Dockerfile --tag localbuild/testimage:latest
       - name: Scan the image and upload dependency results
         uses: anchore/sbom-action@main
         with:
-          image: php:8.2-alpine3.16
-          artifact-name: image.spdx.json
-          dependency-snapshot: true
+          path: .
+#          artifact-name: image.spdx.json
+#          dependency-snapshot: true
