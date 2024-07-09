@@ -13,7 +13,7 @@ jobs:
           curl https://curl.se/windows/dl-8.8.0_3/curl-8.8.0_3-win64-mingw.zip > curl/curl.zip
           cd curl
           unzip curl.zip
-      - run: sh -c "PATH=curl:$PATH curl --version"
+      - run: sh -c 'PATH="$(pwd)/curl:$PATH" curl --version'
 #      - run: sh -c "which sh"
 #      - run: sh -c "which curl"
 #      - shell: pwsh
