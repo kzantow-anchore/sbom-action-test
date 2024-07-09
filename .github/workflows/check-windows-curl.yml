@@ -8,6 +8,6 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - run: curl --version
+      - run: sh -c "curl --version"
       - shell: pwsh
         run: curl --version
