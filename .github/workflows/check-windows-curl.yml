@@ -1,0 +1,13 @@
+name: Check Windows cURL versions
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: curl --version
+      - shell: pwsh
+        run: curl --version
