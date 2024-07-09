@@ -9,5 +9,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: sh -c "curl --version"
+      - run: sh -c "which curl"
       - shell: pwsh
         run: curl --version
