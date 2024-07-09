@@ -13,8 +13,8 @@ jobs:
           curl https://curl.se/windows/dl-8.7.1_3/curl-8.7.1_3-win64-mingw.zip > curl/curl.zip
           cd curl
           unzip curl.zip
-      - run: sh -c 'PATH="$(pwd)/curl/bin:$PATH" curl --version'
-      - run: sh -c "PATH="$(pwd)/curl/bin:$PATH" curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin"
+      - run: sh -c 'PATH="$(pwd)/curl/curl-8.7.1_3-win64-mingw/bin:$PATH" curl --version'
+      - run: sh -c "PATH="$(pwd)/curl/curl-8.7.1_3-win64-mingw/bin:$PATH" curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin"
 #      - run: sh -c "which sh"
 #      - run: sh -c "which curl"
 #      - shell: pwsh
