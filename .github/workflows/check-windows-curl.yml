@@ -15,7 +15,7 @@ jobs:
           unzip curl.zip
       - run: sh -c 'PATH="$(pwd)/curl/curl-8.7.1_3-win64-mingw/bin:$PATH" curl --version'
       - run: sh -c 'PATH="$(pwd)/curl/curl-8.7.1_3-win64-mingw/bin:$PATH" curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh > $(pwd)/install.sh'
-      - run: sh -c 'PATH="$(pwd)/curl/curl-8.7.1_3-win64-mingw/bin:$PATH" sh $(pwd)/install.sh -- -b .'
+      - run: sh -c 'PATH="$(pwd)/curl/curl-8.7.1_3-win64-mingw/bin:$PATH" sh $(pwd)/install.sh -b .'
       - run: sh -c "./syft version"
 #      - run: sh -c "which sh"
 #      - run: sh -c "which curl"
