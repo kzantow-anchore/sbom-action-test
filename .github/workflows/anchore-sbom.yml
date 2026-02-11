@@ -31,13 +31,13 @@ jobs:
 #      - name: Build the Docker image
 #        run: docker build . --file Dockerfile --tag localbuild/testimage:latest
       - name: Scan the workspace and upload dependency results
-        uses: anchore/sbom-action@main
+        uses: anchore/sbom-action@dev-esbuild
         with:
           path: .
           artifact-name: workspace.spdx.json
 #          dependency-snapshot: true
       - name: Scan an image and upload dependency results
-        uses: anchore/sbom-action@main
+        uses: anchore/sbom-action@dev-esbuild
         env:
           SYFT_SCOPE: all-layers
         with:
