@@ -21,6 +21,17 @@ permissions:
   contents: write
 
 jobs:
+  Download-Syft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Syft
+        uses: anchore/sbom-action/download-syft@dependabot/npm_and_yarn/actions/exec-3.0.0
+        id: syft
+
+      - run: echo "${{ steps.syft.outputs.cmd }}"
+
+      - run: ${{ steps.syft.outputs.cmd }} version
+
   Anchore-Build-Scan:
     permissions:
       contents: write # required to upload to the API
@@ -28,19 +39,18 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
-#      - name: Build the Docker image
-#        run: docker build . --file Dockerfile --tag localbuild/testimage:latest
+
       - name: Scan the workspace and upload dependency results
-        uses: anchore/sbom-action@dev-esbuild
+        uses: anchore/sbom-action@dependabot/npm_and_yarn/actions/exec-3.0.0
         with:
           path: .
           artifact-name: workspace.spdx.json
-#          dependency-snapshot: true
+          dependency-snapshot: true
+
       - name: Scan an image and upload dependency results
-        uses: anchore/sbom-action@dev-esbuild
+        uses: anchore/sbom-action@dependabot/npm_and_yarn/actions/exec-3.0.0
         env:
           SYFT_SCOPE: all-layers
         with:
-          image: eclipse-temurin:8u332-b09-jre-windowsservercore-ltsc2022
-          artifact-name: image.spdx.json
-#          dependency-snapshot: true
+          image: alpine:latest
+          artifact-name: alpine-latest.spdx.json

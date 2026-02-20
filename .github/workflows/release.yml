@@ -9,6 +9,6 @@ jobs:
       contents: write # need write to update the generated SBOM
       packages: write # need access to write docker package
     steps:
-      - uses: anchore/sbom-action@main
+      - uses: anchore/sbom-action/publish-sbom@dependabot/npm_and_yarn/actions/exec-3.0.0
         with:
           sbom-artifact-match: .*.spdx.json$
